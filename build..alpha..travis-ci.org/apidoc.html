@@ -1,0 +1,667 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/SGrondin/bottleneck#readme"
+
+    >bottleneck (v1.15.1)</a>
+</h1>
+<h4>Async rate limiter</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.bottleneck">module bottleneck</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bottleneck.bottleneck">
+            function <span class="apidocSignatureSpan"></span>bottleneck
+            <span class="apidocSignatureSpan">(maxNb, minTime, highWater, strategy, rejectOnDrop)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bottleneck.Cluster">
+            function <span class="apidocSignatureSpan">bottleneck.</span>Cluster
+            <span class="apidocSignatureSpan">(maxNb, minTime, highWater, strategy, rejectOnDrop)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bottleneck.DLList">
+            function <span class="apidocSignatureSpan">bottleneck.</span>DLList
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bottleneck.Promise">
+            function <span class="apidocSignatureSpan">bottleneck.</span>Promise
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">bottleneck.</span>Cluster.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">bottleneck.</span>DLList.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">bottleneck.</span>strategy</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.bottleneck.Cluster">module bottleneck.Cluster</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bottleneck.Cluster.Cluster">
+            function <span class="apidocSignatureSpan">bottleneck.</span>Cluster
+            <span class="apidocSignatureSpan">(maxNb, minTime, highWater, strategy, rejectOnDrop)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.bottleneck.Cluster.prototype">module bottleneck.Cluster.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bottleneck.Cluster.prototype.all">
+            function <span class="apidocSignatureSpan">bottleneck.Cluster.prototype.</span>all
+            <span class="apidocSignatureSpan">(cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bottleneck.Cluster.prototype.deleteKey">
+            function <span class="apidocSignatureSpan">bottleneck.Cluster.prototype.</span>deleteKey
+            <span class="apidocSignatureSpan">(key)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bottleneck.Cluster.prototype.key">
+            function <span class="apidocSignatureSpan">bottleneck.Cluster.prototype.</span>key
+            <span class="apidocSignatureSpan">(key)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bottleneck.Cluster.prototype.keys">
+            function <span class="apidocSignatureSpan">bottleneck.Cluster.prototype.</span>keys
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bottleneck.Cluster.prototype.startAutoCleanup">
+            function <span class="apidocSignatureSpan">bottleneck.Cluster.prototype.</span>startAutoCleanup
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bottleneck.Cluster.prototype.stopAutoCleanup">
+            function <span class="apidocSignatureSpan">bottleneck.Cluster.prototype.</span>stopAutoCleanup
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.bottleneck.DLList">module bottleneck.DLList</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bottleneck.DLList.DLList">
+            function <span class="apidocSignatureSpan">bottleneck.</span>DLList
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.bottleneck.DLList.prototype">module bottleneck.DLList.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bottleneck.DLList.prototype.getArray">
+            function <span class="apidocSignatureSpan">bottleneck.DLList.prototype.</span>getArray
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bottleneck.DLList.prototype.push">
+            function <span class="apidocSignatureSpan">bottleneck.DLList.prototype.</span>push
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.bottleneck.DLList.prototype.shift">
+            function <span class="apidocSignatureSpan">bottleneck.DLList.prototype.</span>shift
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.bottleneck" id="apidoc.module.bottleneck">module bottleneck</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.bottleneck.bottleneck" id="apidoc.element.bottleneck.bottleneck">
+        function <span class="apidocSignatureSpan"></span>bottleneck
+        <span class="apidocSignatureSpan">(maxNb, minTime, highWater, strategy, rejectOnDrop)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Bottleneck(maxNb, minTime, highWater, strategy, rejectOnDrop) {
+  this.maxNb = maxNb != null ? maxNb : 0;
+  this.minTime = minTime != null ? minTime : 0;
+  this.highWater = highWater != null ? highWater : -1;
+  this.strategy = strategy != null ? strategy : Bottleneck.prototype.strategy.LEAK;
+  this.rejectOnDrop = rejectOnDrop != null ? rejectOnDrop : false;
+  this.schedulePriority = bind(this.schedulePriority, this);
+  this.submitPriority = bind(this.submitPriority, this);
+  this.submit = bind(this.submit, this);
+  this._nextRequest = Date.now();
+  this._nbRunning = 0;
+  this._queues = this._makeQueues();
+  this._running = {};
+  this._nextIndex = 0;
+  this._unblockTime = 0;
+  this.penalty = (15 * this.minTime) || 5000;
+  this.interrupt = false;
+  this.reservoir = null;
+  this.limiter = null;
+  this.events = {};
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.bottleneck.Cluster" id="apidoc.element.bottleneck.Cluster">
+        function <span class="apidocSignatureSpan">bottleneck.</span>Cluster
+        <span class="apidocSignatureSpan">(maxNb, minTime, highWater, strategy, rejectOnDrop)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Cluster(maxNb, minTime, highWater, strategy, rejectOnDrop) {
+  this.maxNb = maxNb;
+  this.minTime = minTime;
+  this.highWater = highWater;
+  this.strategy = strategy;
+  this.rejectOnDrop = rejectOnDrop;
+  this.limiters = {};
+  this.Bottleneck = require(&#x22;./Bottleneck&#x22;);
+  this.startAutoCleanup();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+The `Cluster` feature of Bottleneck manages many limiters automatically for you. It creates limiters dynamically and transparently
+.
+
+Let&#x27;s take a DNS server as an example of how Bottleneck can be used. It&#x27;s a service that sees a lot of abuse and where
+ incoming DNS requests need to be rate limited. Bottleneck is so tiny, it&#x27;s perfectly fine to create one limiter for each origin
+ IP, even if it means creating thousands and thousands of limiters. The `Cluster` mode is perfect for this use case. We can create
+ one cluster and then use the origin IP to rate limit each IP independently. Each call with the same key will be routed to the same
+ underlying limiter. A cluster is created exactly like a limiter:
+
+
+```js
+var cluster = new Bottleneck.<span class="apidocCodeKeywordSpan">Cluster</span>(maxConcurrent, minTime, highWater, strategy);
+```
+
+The cluster is then used with the `.key(str)` method:
+
+```js
+// In this example, the key is an IP
+cluster.key(&#x22;77.66.54.32&#x22;).submit(someAsyncCall, arg1, arg2, cb);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.bottleneck.DLList" id="apidoc.element.bottleneck.DLList">
+        function <span class="apidocSignatureSpan">bottleneck.</span>DLList
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function DLList() {
+  this._first = null;
+  this._last = null;
+  this.length = 0;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.bottleneck.Promise" id="apidoc.element.bottleneck.Promise">
+        function <span class="apidocSignatureSpan">bottleneck.</span>Promise
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Promise() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.bottleneck.Cluster" id="apidoc.module.bottleneck.Cluster">module bottleneck.Cluster</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.bottleneck.Cluster.Cluster" id="apidoc.element.bottleneck.Cluster.Cluster">
+        function <span class="apidocSignatureSpan">bottleneck.</span>Cluster
+        <span class="apidocSignatureSpan">(maxNb, minTime, highWater, strategy, rejectOnDrop)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Cluster(maxNb, minTime, highWater, strategy, rejectOnDrop) {
+  this.maxNb = maxNb;
+  this.minTime = minTime;
+  this.highWater = highWater;
+  this.strategy = strategy;
+  this.rejectOnDrop = rejectOnDrop;
+  this.limiters = {};
+  this.Bottleneck = require(&#x22;./Bottleneck&#x22;);
+  this.startAutoCleanup();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+The `Cluster` feature of Bottleneck manages many limiters automatically for you. It creates limiters dynamically and transparently
+.
+
+Let&#x27;s take a DNS server as an example of how Bottleneck can be used. It&#x27;s a service that sees a lot of abuse and where
+ incoming DNS requests need to be rate limited. Bottleneck is so tiny, it&#x27;s perfectly fine to create one limiter for each origin
+ IP, even if it means creating thousands and thousands of limiters. The `Cluster` mode is perfect for this use case. We can create
+ one cluster and then use the origin IP to rate limit each IP independently. Each call with the same key will be routed to the same
+ underlying limiter. A cluster is created exactly like a limiter:
+
+
+```js
+var cluster = new Bottleneck.<span class="apidocCodeKeywordSpan">Cluster</span>(maxConcurrent, minTime, highWater, strategy);
+```
+
+The cluster is then used with the `.key(str)` method:
+
+```js
+// In this example, the key is an IP
+cluster.key(&#x22;77.66.54.32&#x22;).submit(someAsyncCall, arg1, arg2, cb);
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.bottleneck.Cluster.prototype" id="apidoc.module.bottleneck.Cluster.prototype">module bottleneck.Cluster.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.bottleneck.Cluster.prototype.all" id="apidoc.element.bottleneck.Cluster.prototype.all">
+        function <span class="apidocSignatureSpan">bottleneck.Cluster.prototype.</span>all
+        <span class="apidocSignatureSpan">(cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">all = function (cb) {
+  var k, ref, results, v;
+  ref = this.limiters;
+  results = [];
+  for (k in ref) {
+    if (!hasProp.call(ref, k)) continue;
+    v = ref[k];
+    results.push(cb(v));
+  }
+  return results;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+### all()
+
+* `cb` : A function to be executed on every limiter in the cluster.
+
+For example, this will call `stopAll()` on every limiter in the cluster:
+
+```javasript
+cluster.<span class="apidocCodeKeywordSpan">all</span>(function(limiter){
+  limiter.stopAll();
+});
+```
+
+
+### keys()
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.bottleneck.Cluster.prototype.deleteKey" id="apidoc.element.bottleneck.Cluster.prototype.deleteKey">
+        function <span class="apidocSignatureSpan">bottleneck.Cluster.prototype.</span>deleteKey
+        <span class="apidocSignatureSpan">(key)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">deleteKey = function (key) {
+  if (key == null) {
+    key = &#x22;&#x22;;
+  }
+  return delete this.limiters[key];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.bottleneck.Cluster.prototype.key" id="apidoc.element.bottleneck.Cluster.prototype.key">
+        function <span class="apidocSignatureSpan">bottleneck.Cluster.prototype.</span>key
+        <span class="apidocSignatureSpan">(key)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">key = function (key) {
+  var ref;
+  if (key == null) {
+    key = &#x22;&#x22;;
+  }
+  return (ref = this.limiters[key]) != null ? ref : (this.limiters[key] = new this.Bottleneck(this.maxNb, this.minTime, this.highWater
+, this.strategy, this.rejectOnDrop));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+Let&#x27;s take a DNS server as an example of how Bottleneck can be used. It&#x27;s a service that sees a lot of abuse and where
+ incoming DNS requests need to be rate limited. Bottleneck is so tiny, it&#x27;s perfectly fine to create one limiter for each origin
+ IP, even if it means creating thousands and thousands of limiters. The `Cluster` mode is perfect for this use case. We can create
+ one cluster and then use the origin IP to rate limit each IP independently. Each call with the same key will be routed to the same
+ underlying limiter. A cluster is created exactly like a limiter:
+
+
+```js
+var cluster = new Bottleneck.Cluster(maxConcurrent, minTime, highWater, strategy);
+```
+
+The cluster is then used with the `.<span class="apidocCodeKeywordSpan">key</span>(str)` method:
+
+```js
+// In this example, the key is an IP
+cluster.key(&#x22;77.66.54.32&#x22;).submit(someAsyncCall, arg1, arg2, cb);
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.bottleneck.Cluster.prototype.keys" id="apidoc.element.bottleneck.Cluster.prototype.keys">
+        function <span class="apidocSignatureSpan">bottleneck.Cluster.prototype.</span>keys
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">keys = function () {
+  return Object.keys(this.limiters);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.bottleneck.Cluster.prototype.startAutoCleanup" id="apidoc.element.bottleneck.Cluster.prototype.startAutoCleanup">
+        function <span class="apidocSignatureSpan">bottleneck.Cluster.prototype.</span>startAutoCleanup
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">startAutoCleanup = function () {
+  var base;
+  this.stopAutoCleanup();
+  return typeof (base = (this.interval = setInterval((function(_this) {
+    return function() {
+      var k, ref, results, time, v;
+      time = Date.now();
+      ref = _this.limiters;
+      results = [];
+      for (k in ref) {
+        v = ref[k];
+        if ((v._nextRequest + (1000 * 60 * 5)) &#x3c; time) {
+          results.push(_this.deleteKey(k));
+        } else {
+          results.push(void 0);
+        }
+      }
+      return results;
+    };
+  })(this), 1000 * 30))).unref === &#x22;function&#x22; ? base.unref() : void 0;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.bottleneck.Cluster.prototype.stopAutoCleanup" id="apidoc.element.bottleneck.Cluster.prototype.stopAutoCleanup">
+        function <span class="apidocSignatureSpan">bottleneck.Cluster.prototype.</span>stopAutoCleanup
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">stopAutoCleanup = function () {
+  return clearInterval(this.interval);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.bottleneck.DLList" id="apidoc.module.bottleneck.DLList">module bottleneck.DLList</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.bottleneck.DLList.DLList" id="apidoc.element.bottleneck.DLList.DLList">
+        function <span class="apidocSignatureSpan">bottleneck.</span>DLList
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function DLList() {
+  this._first = null;
+  this._last = null;
+  this.length = 0;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.bottleneck.DLList.prototype" id="apidoc.module.bottleneck.DLList.prototype">module bottleneck.DLList.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.bottleneck.DLList.prototype.getArray" id="apidoc.element.bottleneck.DLList.prototype.getArray">
+        function <span class="apidocSignatureSpan">bottleneck.DLList.prototype.</span>getArray
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getArray = function () {
+  var node, ref, results;
+  node = this._first;
+  results = [];
+  while (node != null) {
+    results.push((ref = node, node = node.next, ref.value));
+  }
+  return results;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.bottleneck.DLList.prototype.push" id="apidoc.element.bottleneck.DLList.prototype.push">
+        function <span class="apidocSignatureSpan">bottleneck.DLList.prototype.</span>push
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">push = function (value) {
+  var node;
+  this.length++;
+  node = {
+    value: value,
+    next: null
+  };
+  if (this._last != null) {
+    this._last.next = node;
+    this._last = node;
+  } else {
+    this._first = this._last = node;
+  }
+  return void 0;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.bottleneck.DLList.prototype.shift" id="apidoc.element.bottleneck.DLList.prototype.shift">
+        function <span class="apidocSignatureSpan">bottleneck.DLList.prototype.</span>shift
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">shift = function () {
+  var ref1, value;
+  if (this._first == null) {
+    return void 0;
+  } else {
+    this.length--;
+  }
+  value = this._first.value;
+  this._first = (ref1 = this._first.next) != null ? ref1 : (this._last = null);
+  return value;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
